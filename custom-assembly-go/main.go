@@ -30,7 +30,7 @@ import (
 	"chainguard.dev/sdk/auth"
 	"chainguard.dev/sdk/proto/platform"
 	commonv1 "chainguard.dev/sdk/proto/platform/common/v1"
-	"chainguard.dev/sdk/proto/platform/iam/v1"
+	iamv1 "chainguard.dev/sdk/proto/platform/iam/v1"
 	registryv1 "chainguard.dev/sdk/proto/platform/registry/v1"
 
 	"gopkg.in/yaml.v2"
@@ -164,10 +164,10 @@ func printBuildReports(reports []*registryv1.BuildReport) {
 //
 // The build.yaml file should have the following format:
 //
-//    contents:
-//      packages:
-//        - package1
-//        - package2
+//	contents:
+//	  packages:
+//	    - package1
+//	    - package2
 //
 // Parameters:
 //   - ctx: The context for the API call
@@ -357,7 +357,7 @@ func main() {
 
 	// SECTION 2: LIST REPOSITORIES
 	// First, get the group ID by name
-	groupFilter := &v1.GroupFilter{
+	groupFilter := &iamv1.GroupFilter{
 		Name: defaultGroupName,
 	}
 	groupResp, err := clients.IAM().Groups().List(ctx, groupFilter)
