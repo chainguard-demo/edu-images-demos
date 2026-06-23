@@ -5,10 +5,22 @@ using System.Net;
 using System.Runtime.InteropServices;
 using static System.Console;
 
+StreamWriter? fileWriter = null;
+
+void WriteLineToConsoleAndFile(string? value = null)
+{
+    WriteLine(value);
+    fileWriter?.WriteLine(value);
+}
+
 // Variant of https://github.com/dotnet/core/tree/main/samples/dotnet-runtimeinfo
 // Ascii text: https://ascii.co.uk/text (Univers font)
 
-WriteLine("""
+try
+{
+    fileWriter = new StreamWriter("output.txt");
+
+    WriteLineToConsoleAndFile("""
          42                                                    
          42              ,d                             ,d     
          42              42                             42     
@@ -26,19 +38,19 @@ GCMemoryInfo gcInfo = GC.GetGCMemoryInfo();
 long totalMemoryBytes = gcInfo.TotalAvailableMemoryBytes;
 
 // OS and .NET information
-WriteLine($"{nameof(RuntimeInformation.OSArchitecture)}: {RuntimeInformation.OSArchitecture}");
-WriteLine($"{nameof(RuntimeInformation.OSDescription)}: {RuntimeInformation.OSDescription}");
-WriteLine($"{nameof(RuntimeInformation.FrameworkDescription)}: {RuntimeInformation.FrameworkDescription}");
-WriteLine();
+WriteLineToConsoleAndFile($"{nameof(RuntimeInformation.OSArchitecture)}: {RuntimeInformation.OSArchitecture}");
+WriteLineToConsoleAndFile($"{nameof(RuntimeInformation.OSDescription)}: {RuntimeInformation.OSDescription}");
+WriteLineToConsoleAndFile($"{nameof(RuntimeInformation.FrameworkDescription)}: {RuntimeInformation.FrameworkDescription}");
+WriteLineToConsoleAndFile();
 
 // Environment information
-WriteLine($"{nameof(Environment.UserName)}: {Environment.UserName}");
-WriteLine($"HostName : {Dns.GetHostName()}");
-WriteLine();
+WriteLineToConsoleAndFile($"{nameof(Environment.UserName)}: {Environment.UserName}");
+WriteLineToConsoleAndFile($"HostName : {Dns.GetHostName()}");
+WriteLineToConsoleAndFile();
 
 // Hardware information
-WriteLine($"{nameof(Environment.ProcessorCount)}: {Environment.ProcessorCount}");
-WriteLine($"{nameof(GCMemoryInfo.TotalAvailableMemoryBytes)}: {totalMemoryBytes} ({GetInBestUnit(totalMemoryBytes)})");
+WriteLineToConsoleAndFile($"{nameof(Environment.ProcessorCount)}: {Environment.ProcessorCount}");
+WriteLineToConsoleAndFile($"{nameof(GCMemoryInfo.TotalAvailableMemoryBytes)}: {totalMemoryBytes} ({GetInBestUnit(totalMemoryBytes)})");
 
 string[] memoryLimitPaths = new string[] 
 {
@@ -62,10 +74,10 @@ if (OperatingSystem.IsLinux() &&
     // get memory cgroup information
     GetBestValue(currentMemoryPaths, out long currentMemory, out string? memoryPath);
 
-    WriteLine($"cgroup memory constraint: {bestMemoryLimitPath}");
-    WriteLine($"cgroup memory limit: {memoryLimit} ({GetInBestUnit(memoryLimit)})");
-    WriteLine($"cgroup memory usage: {currentMemory} ({GetInBestUnit(currentMemory)})");
-    WriteLine($"GC Hard limit %: {(double)totalMemoryBytes/memoryLimit * 100:N0}");
+    WriteLineToConsoleAndFile($"cgroup memory constraint: {bestMemoryLimitPath}");
+    WriteLineToConsoleAndFile($"cgroup memory limit: {memoryLimit} ({GetInBestUnit(memoryLimit)})");
+    WriteLineToConsoleAndFile($"cgroup memory usage: {currentMemory} ({GetInBestUnit(currentMemory)})");
+    WriteLineToConsoleAndFile($"GC Hard limit %: {(double)totalMemoryBytes/memoryLimit * 100:N0}");
 }
 
 string GetInBestUnit(long size)
@@ -102,3 +114,9 @@ bool GetBestValue(string[] paths, out long limit, [NotNullWhen(true)] out string
     limit = 0;
     return false;
 }
+}
+finally
+{
+    fileWriter?.Close();
+}
+
