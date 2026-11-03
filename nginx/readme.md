@@ -1,6 +1,6 @@
 # nginx Demo
 
-This repository contains a simple demonstration of an nginx application using the Chainguard nginx Image. For a complete tutorial, please refer to the [Chainguard Academy Getting Started with the nginx Chainguard Image guide](https://edu.chainguard.dev/chainguard/chainguard-images/getting-started/nginx/).
+This repository contains a simple demonstration of an nginx application using the Chainguard nginx Image. For a complete tutorial, please refer to the [Getting Started with the nginx Chainguard Image guide](https://www.chainguard.dev/docs/chainguard/containers/getting-started/web-and-data-services/nginx).
 
 ## Running the Demo
 
