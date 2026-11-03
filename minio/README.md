@@ -329,7 +329,7 @@ Chainguard containers run as non-root. Ensure volume permissions are correct:
 ## Additional Resources
 
 - [MinIO Documentation](https://min.io/docs/minio/linux/index.html)
-- [Chainguard Images](https://edu.chainguard.dev/chainguard/chainguard-images/)
+- [Chainguard Images](https://www.chainguard.dev/docs/chainguard/containers)
 - [MinIO Python SDK](https://min.io/docs/minio/linux/developers/python/minio-py.html)
 - [Chainguard Console](https://console.chainguard.dev/)
 

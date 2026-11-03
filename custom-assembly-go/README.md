@@ -1,4 +1,4 @@
-Chainguard's [Custom Assembly](https://edu.chainguard.dev/chainguard/chainguard-images/features/ca-docs/custom-assembly/) is a tool that allows customers to create customized containers with extra packages added. This enables customers to reduce their risk exposure by creating container images that are tailored to their internal organization and application requirements while still having few-to-zero CVEs.
+Chainguard's [Custom Assembly](https://www.chainguard.dev/docs/chainguard/containers/custom-assembly/overview) is a tool that allows customers to create customized containers with extra packages added. This enables customers to reduce their risk exposure by creating container images that are tailored to their internal organization and application requirements while still having few-to-zero CVEs.
 
 You can use the Chainguard API to further customize your Custom Assembly builds and retrieve information about them. The demo application stored in this repository can be used to update a Custom Assembly container's configuration based on a provided YAML file.
 
@@ -9,7 +9,7 @@ In order to follow along with this guide, you will need the following:
 
 * Access to a Custom Assembly container image. If your organization doesn't yet have access to Custom Assembly, reach out to your account team to start the process.
 * The demo application used in this guide is written in Go, so you will need Go installed on your local machine. Refer to the [official Go documentation](https://go.dev/doc/install) for instructions on downloading and installing Go.
-* You will also need [`chainctl` installed](https://edu.chainguard.dev/chainguard/chainctl-usage/how-to-install-chainctl/) on your local machine to create a Chainguard token and authenticate to the Chainguard API.
+* You will also need [`chainctl` installed](https://www.chainguard.dev/docs/platform/chainctl-usage/how-to-install-chainctl) on your local machine to create a Chainguard token and authenticate to the Chainguard API.
 
 
 ## Running the Demo Application
@@ -63,7 +63,7 @@ contents:
 	- go
 ```
 
-Here, replace `wolfi-base` and `go` with whatever packages you'd like to be included in the customized container image. Note that you can only add packages that your organization already has access to, based on the Chainguard Containers you have already purchased. Refer to the [Custom Assembly Overview](https://edu.chainguard.dev/chainguard/chainguard-images/features/ca-docs/custom-assembly/#limitations) for more details on the limitations of what packages you can add to a Custom Assembly image.
+Here, replace `wolfi-base` and `go` with whatever packages you'd like to be included in the customized container image. Note that you can only add packages that your organization already has access to, based on the Chainguard Containers you have already purchased. Refer to the [Custom Assembly Overview](https://www.chainguard.dev/docs/chainguard/containers/custom-assembly/overview#limitations) for more details on the limitations of what packages you can add to a Custom Assembly image.
 
 Save and close the `build.yaml` file. Finally, you can run the application to apply the configuration listed in the `build.yaml` file to your organization's Custom Assembly image:
 
@@ -137,4 +137,4 @@ Again, the `main.go` file contains many comments that explain each portion of th
 
 ## More Information
 
-For a more detailed explanation of this demo application, we encourage you to follow the [associated tutorial on Chainguard Academy](https://edu.chainguard.dev/chainguard/chainguard-images/features/ca-docs/custom-assembly-api-demo/). You may also find our [overview of Custom Assembly](https://edu.chainguard.dev/chainguard/chainguard-images/features/ca-docs/custom-assembly/) to be of interest.
+For a more detailed explanation of this demo application, we encourage you to follow the [associated tutorial in Chainguard Docs](https://www.chainguard.dev/docs/chainguard/containers/custom-assembly/custom-assembly-api-demo). You may also find our [overview of Custom Assembly](https://www.chainguard.dev/docs/chainguard/containers/custom-assembly/overview) to be of interest.

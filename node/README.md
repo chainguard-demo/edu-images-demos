@@ -1,6 +1,6 @@
 # node-demo
 
-This directory holds a sample JavaScript application to be used within a Node environment. For a more detailed explanation of this example application we encourage you to refer to our [Getting Started with the Node Chainguard Image](https://edu.chainguard.dev/chainguard/chainguard-images/getting-started/getting-started-node/) tutorial.
+This directory holds a sample JavaScript application to be used within a Node environment. For a more detailed explanation of this example application we encourage you to refer to our [Getting Started with the Node Chainguard Image](https://www.chainguard.dev/docs/chainguard/containers/getting-started/languages-and-runtimes/node) tutorial.
 
 ## Running the demo
 
